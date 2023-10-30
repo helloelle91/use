@@ -1,0 +1,26 @@
+3D 
+
+gameobj-3d obj - plane and sphere
+click assets - create - material - name it ballcolor
+plane=select bollcolor- inspector- select color- drag n drop to ball
+sphere=same do for plane 
+
+slect shpher - inspector - add component- new script - name it - create n add - write code 
+
+componet - physiscs- rigidbody - 
+in controller - speed= 10
+
+main camera - add component - new script - name itcamera controller - paste code 
+inspector - cameracontroller - player = drag drop sphere 
+
+gameobject -create emptyy- name it walls 
+gameobject-3D-cube- put cube in wall folder , value - x=10,y=1,z=0.5
+copy it (crt + D) x 3   z=8
+
+gameobject-empty- take cube - change rotation - x,y,z = 45  scale = x,y,z = 0.5  give tag - add tag  - name it then select it again add component - new script - write code 
+componet - physics - rigidbody - use gravity tick is trigger should be on for pickupobject
+ copy it 4 times 
+
+create - ui -  2 texts - counttext/wintext
+
+in sphere drag drop count text and wintext in respective

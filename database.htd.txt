@@ -1,0 +1,17 @@
+prac 3
+service - database- server -create database - username and pass then ok
+then connect it  
+table will come -table - create table add name and columns then ok
+then go view data 
+make new project - web sevice  - design - add operations (bse,nse, ) no parameters 
+
+source  then add try chatch code
+
+right click - properties - driver class click - copy and then paste it in source code 
+in class 
+
+connection then open and copy paste in (driver code, username,pass) then deploy and test the webservice 
+
+
+make new project - web service client -  and then make new jsp drag and drop put refrenceses and then html page connect new jsp (connect uisng pattlet)
+

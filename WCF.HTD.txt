@@ -1,0 +1,14 @@
+prac 8 & 9
+
+visual studio  2019 
+create - wcf service application -  solution exploralar - practical -click  iservice
+add operations 
+service svc.cs open then add values  then run   there qill be a link copy and paste it in brower you will get yout wsdl path
+
+solutoion - add -new project - client -
+create  webform -double  click on client - add - new items - web form 
+
+design it 
+
+client double click - add - service refernce - address - wsdl path -go- ok 
+
