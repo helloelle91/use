@@ -1,0 +1,72 @@
+package mypack;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+
+
+@WebService(serviceName = "FlightSerive")
+public class FlightService {
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "bookTicket")
+    public String bookTicket(@WebParam(name = "Departure") String Departure, @WebParam(name = "DateDeparture") String DateDeparture, @WebParam(name = "Destination") String Destination, @WebParam(name = "SeatBooked") String SeatBooked) {
+        String book = "";
+         try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/FlightDB","admin","1234");
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM FLIGHT WHERE SEATBOOKED ='"+SeatBooked+"'");
+            rs.next();
+            book=rs.getString("SEATBOOKED");
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return book;
+    }
+}
+
+**********************************************Client******************************************************
+  <%
+            String depart = request.getParameter("n1");
+    String datedepart = request.getParameter("n2");
+    String destiny = request.getParameter("n3");
+    String bookticket = request.getParameter("n4");
+    try {
+	mypack.FlightSerive service = new mypack.FlightSerive();
+	mypack.FlightService port = service.getFlightServicePort();
+	 // TODO initialize WS operation arguments here
+	java.lang.String departure = "";
+	java.lang.String dateDeparture = "";
+	java.lang.String destination = "";
+	java.lang.String seatBooked = "";
+	// TODO process result here
+        int bookedTickets = Integer.parseInt(bookticket);
+	java.lang.String result = port.bookTicket(departure, dateDeparture, destination, seatBooked);
+        if (bookedTickets <= 50) {
+            out.println("Successful booking ");
+        } else {
+            out.println("Flight is full ");
+        }
+
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+
+
+            <form action="newjsp.jsp">
+            Departure:<input type="text" name="n1" value="" /><br>
+             DateofDepature:<input type="text" name="n2" value="" /><br>
+              Destination:<input type="text" name="n3" value="" /><br>
+               BookTicket:<input type="text" name="n4" value="" /><br>
+               <input type="submit" value="Submit" />
+        </form>
